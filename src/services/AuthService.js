@@ -7,12 +7,13 @@ export default function AuthUser(){
 
     const navigate = useNavigate();
 
-    const getToken =()=>{
+
+    const getToken =()=>{ // get token froom session storage
         const tokenString =sessionStorage.getItem('token');
         const userToken = JSON.parse(tokenString);
         return userToken;
     }
-    const getUser =()=>{
+    const getUser =()=>{ // get user from session storage
         const userString =sessionStorage.getItem('user');
         const userDetails = JSON.parse(userString);
         return userDetails;
@@ -21,7 +22,7 @@ export default function AuthUser(){
     const [token, setToken] =useState(getToken());
     const [user, setUser] = useState(getUser());
 
-    const saveToken =( user, token)=>{
+    const saveToken =( user, token)=>{ // save to session storage
         sessionStorage.setItem('token', JSON.stringify(token));
         sessionStorage.setItem('user', JSON.stringify(user));
         //console.log(user);
@@ -51,7 +52,8 @@ export default function AuthUser(){
         user,
         getToken,
         http,
-        logout
+        logout,
+        setUser
     }
 
 }

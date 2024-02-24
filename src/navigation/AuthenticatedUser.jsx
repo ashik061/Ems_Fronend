@@ -3,6 +3,7 @@ import { Routes,Route,Link } from 'react-router-dom';
 import Home from '../components/Home';
 import Dashboard from '../components/Dashboard';
 import AuthUser from '../services/AuthService';
+import Account from '../components/Account';
 
 function AuthenticatedUser() {
     const {token,logout}= AuthUser();
@@ -23,6 +24,9 @@ function AuthenticatedUser() {
             <Link className="nav-link" to="/Dashboard">Dashboard</Link>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to="/Account">Account</Link>
+          </li>
+          <li className="nav-item">
             <span role="button" className="nav-link" onClick={logOutUser}>Logout</span>
           </li>
         </ul>
@@ -32,6 +36,7 @@ function AuthenticatedUser() {
         <Routes>
           <Route path="/" element ={<Home />} />
           <Route path="/Dashboard" element ={<Dashboard />} />
+          <Route path="/Account" element ={<Account />} />
         </Routes>
       </div>
     </>

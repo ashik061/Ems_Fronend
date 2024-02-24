@@ -1,7 +1,7 @@
 export default function Home(){
     return (
         <div>
-            Welcome to EMS !
+            <h2 className="mt-4 mb-4">Welcome to EMS !</h2>
         </div>
     )
 }

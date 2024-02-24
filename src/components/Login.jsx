@@ -6,11 +6,13 @@ export default function Login() {
     const [password,setPassword]=useState();
     const {http,setToken} = AuthUser();
 
-    const submitForm = ()=>{
+    const submitForm = ()=>{ // API call to get jwt token for user login
         //console.log(email + ' ' + password);
         http.post('/login', {email: email, password: password}).then((res)=>{
             setToken(res.data.user, res.data.jwt);
-        })
+        }).catch((error) => {
+            console.error('Login failed:', error);
+        });
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import AdminService from '../../services/AdminService';
 import axios from 'axios';
 import AuthUser from "../../services/AuthService";
+import UpdateUserProfileModal from './UpdateUserProfile';
 
 
 const ListUsersComponent = () => {
@@ -25,6 +26,10 @@ const ListUsersComponent = () => {
         console.error('Data fetch failed:', error);
     });
 
+    const addUsers = () =>{
+        return null;
+    }
+
     // useEffect(()=> {
     //     httpAdmin.get('/users').then((response) => {
     //         setUsers(response.data);
@@ -36,6 +41,7 @@ const ListUsersComponent = () => {
     return (
         <div className='.container'>
             <h2 className='text-center'>List of All Users</h2>
+            <button type="button" onClick={addUsers} className="btn btn-primary mt-4">Add New User</button>
             <table className='table table-striped table-bordered'>
                 <thead>
                     <tr>

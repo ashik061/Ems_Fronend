@@ -31,6 +31,11 @@ export default function AuthUser(){
 
     }
 
+    const logout =()=>{
+        sessionStorage.clear();
+        navigate('/Login');
+    }
+
     const http =axios.create({
 
         baseURL: "http://localhost:8080/auth",
@@ -44,7 +49,8 @@ export default function AuthUser(){
         token,
         user,
         getToken,
-        http
+        http,
+        logout
     }
 
 }

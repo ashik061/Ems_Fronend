@@ -1,15 +1,17 @@
 import { useState } from "react"
 import AuthUser from "../services/AuthService";
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Register() {
+    const navigate = useNavigate();
     const [email,setEmail]=useState();
     const [password,setPassword]=useState();
-    const {http,setToken} = AuthUser();
+    const {http} = AuthUser();
 
     const submitForm = ()=>{
         //console.log(email + ' ' + password);
-        http.post('/login', {email: email, password: password}).then((res)=>{
-            setToken(res.data.user, res.data.jwt);
+        http.post('/register', {email: email, password: password}).then((res)=>{
+            navigate('/login');
         })
     }
 
@@ -27,14 +29,14 @@ export default function Login() {
                         <label>Password:</label>
                         <input type="password" className="form-control" placeholder="Enter password" 
                             onChange={e=>setPassword(e.target.value)}
-                        id="pwd"/>
+                        id="password"/>
                     </div>
                 
-                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Login</button>
+                    <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Register</button>
                 </div>
 
             </div>
-
         </div>
+
     )
 }

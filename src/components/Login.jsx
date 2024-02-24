@@ -4,12 +4,12 @@ import AuthUser from "../services/AuthService";
 export default function Login() {
     const [email,setEmail]=useState();
     const [password,setPassword]=useState();
-    const {http} = AuthUser();
+    const {http,setToken} = AuthUser();
 
     const submitForm = ()=>{
         //console.log(email + ' ' + password);
         http.post('/login', {email: email, password: password}).then((res)=>{
-            console.log(res.data);
+            setToken(res.data.user, res.data.jwt);
         })
     }
 
